@@ -7,6 +7,8 @@ func _ready():
 	for i in 100:
 		var new_cell = cell.instantiate()
 		new_cell.global_position = getNextSpawnLoc()
+		new_cell.add_to_group("1")
+		
 		add_child(new_cell)
 		
 func getNextSpawnLoc():

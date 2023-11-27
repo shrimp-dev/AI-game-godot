@@ -21,20 +21,20 @@ script = ExtResource("1_gu3k2")
 [node name="Macrofago" parent="." instance=ExtResource("1_dd6gn")]
 position = Vector2(46, 35)
 
-[node name="Wall" type="StaticBody2D" parent="."]
+[node name="Wall" type="StaticBody2D" parent="." groups=["0"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" groups=["0"]]
 position = Vector2(-11, 328)
 shape = SubResource("RectangleShape2D_s4wh1")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Wall"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Wall" groups=["0"]]
 position = Vector2(546.5, -10)
 shape = SubResource("RectangleShape2D_dup8k")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Wall"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Wall" groups=["0"]]
 position = Vector2(1161.5, 317)
 shape = SubResource("RectangleShape2D_bn3nv")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Wall"]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Wall" groups=["0"]]
 position = Vector2(581.5, 655)
 shape = SubResource("RectangleShape2D_tjc3q")

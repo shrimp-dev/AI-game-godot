@@ -2,8 +2,9 @@ extends CharacterBody2D
 
 
 const SPEED = 150
+const class_dict = {"0":0, "1":1,"2":2,}
 
-
+var input_array = Array()
 func _physics_process(delta):
 	velocity.x = 0
 	velocity.y = 0
@@ -21,19 +22,34 @@ func _physics_process(delta):
 func detect_distance() : 
 	
 	if $Down.is_colliding() :
-		print("Down: " + str(position.distance_to($Down.get_collider().position)))
-		print($Down.get_collider().name)
+		var ray_size = Vector2(0,0).distance_to($Down.target_position)
+		input_array.append(position.distance_to($Down.get_collider().position)/ray_size)
+		input_array.append(class_dict[$Down.get_collider().get_groups()[0]])
 	if $Right.is_colliding() :
-		print("Right: " + str(position.distance_to($Right.get_collider().position)))
+		var ray_size = Vector2(0,0).distance_to($Right.target_position)
+		input_array.append(position.distance_to($Right.get_collider().position)/ray_size)		
+		input_array.append(class_dict[$Right.get_collider().get_groups()[0]])
 	if $Left.is_colliding() :
-		print("Left: " + str(position.distance_to($Left.get_collider().position)))
+		var ray_size = Vector2(0,0).distance_to($Left.target_position)
+		input_array.append(position.distance_to($Left.get_collider().position)/ray_size)		
+		input_array.append(class_dict[$Left.get_collider().get_groups()[0]])
 	if $Up.is_colliding() :
-		print("Up: " + str(position.distance_to($Up.get_collider().position)))
+		var ray_size = Vector2(0,0).distance_to($Up.target_position)
+		input_array.append(position.distance_to($Up.get_collider().position)/ray_size)		
+		input_array.append(class_dict[$Up.get_collider().get_groups()[0]])
 	if $Down_Right.is_colliding() :
-		print("DownRight: " + str(position.distance_to($Down_Right.get_collider().position)))
+		var ray_size = Vector2(0,0).distance_to($Down_Right.target_position)
+		input_array.append(position.distance_to($Down_Right.get_collider().position)/ray_size)		
+		input_array.append(class_dict[$Down_Right.get_collider().get_groups()[0]])
 	if $Down_Left.is_colliding() :
-		print("DownLeft: " + str(position.distance_to($Down_Left.get_collider().position)))
+		var ray_size = Vector2(0,0).distance_to($Down_Left.target_position)
+		input_array.append(position.distance_to($Down_Left.get_collider().position)/ray_size)		
+		input_array.append(class_dict[$Down_Left.get_collider().get_groups()[0]])
 	if $Up_Right.is_colliding() :
-		print("UpRight: " + str(position.distance_to($Up_Right.get_collider().position)))
+		var ray_size = Vector2(0,0).distance_to($Up_Right.target_position)
+		input_array.append(position.distance_to($Up_Right.get_collider().position)/ray_size)		
+		input_array.append(class_dict[$Up_Right.get_collider().get_groups()[0]])
 	if $Up_Left.is_colliding() :
-		print("UpLeft: " + str(position.distance_to($Up_Left.get_collider().position)))
+		var ray_size = Vector2(0,0).distance_to($Up_Left.target_position)
+		input_array.append(position.distance_to($Up_Left.get_collider().position)/ray_size)		
+		input_array.append(class_dict[$Up_Left.get_collider().get_groups()[0]])
