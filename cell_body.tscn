@@ -1,8 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://de2nblxnpyued"]
+[gd_scene load_steps=4 format=3 uid="uid://de2nblxnpyued"]
 
 [ext_resource type="Texture2D" uid="uid://4qp2ljqrd7x3" path="res://assets/Cell.png" id="1_6cu1y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_82so8"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6gjau"]
 size = Vector2(16, 16)
 
 [node name="CellBody" type="CharacterBody2D"]
@@ -14,3 +17,9 @@ shape = SubResource("RectangleShape2D_82so8")
 [node name="Cell" type="Sprite2D" parent="."]
 position = Vector2(0, -1)
 texture = ExtResource("1_6cu1y")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_6gjau")
