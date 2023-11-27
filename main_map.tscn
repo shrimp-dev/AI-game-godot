@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://b67vfembtft5f"]
+
+[ext_resource type="PackedScene" uid="uid://bgaykyupmieqr" path="res://macrofago.tscn" id="1_dd6gn"]
+[ext_resource type="PackedScene" uid="uid://de2nblxnpyued" path="res://cell_body.tscn" id="2_b0kn4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s4wh1"]
+size = Vector2(20, 782)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dup8k"]
+size = Vector2(1337, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bn3nv"]
+size = Vector2(19, 798)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tjc3q"]
+size = Vector2(1393, 20)
+
+[node name="Map" type="Node2D"]
+
+[node name="Macrofago" parent="." instance=ExtResource("1_dd6gn")]
+position = Vector2(46, 35)
+
+[node name="CellBody" parent="." instance=ExtResource("2_b0kn4")]
+position = Vector2(118, 208)
+
+[node name="CellBody2" parent="." instance=ExtResource("2_b0kn4")]
+position = Vector2(203, 273)
+
+[node name="CellBody3" parent="." instance=ExtResource("2_b0kn4")]
+position = Vector2(244, 140)
+
+[node name="CellBody4" parent="." instance=ExtResource("2_b0kn4")]
+position = Vector2(172, 378)
+
+[node name="CellBody5" parent="." instance=ExtResource("2_b0kn4")]
+position = Vector2(379, 374)
+
+[node name="CellBody6" parent="." instance=ExtResource("2_b0kn4")]
+position = Vector2(486, 237)
+
+[node name="CellBody7" parent="." instance=ExtResource("2_b0kn4")]
+position = Vector2(596, 387)
+
+[node name="CellBody8" parent="." instance=ExtResource("2_b0kn4")]
+position = Vector2(586, 105)
+
+[node name="Wall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+position = Vector2(-11, 328)
+shape = SubResource("RectangleShape2D_s4wh1")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Wall"]
+position = Vector2(546.5, -10)
+shape = SubResource("RectangleShape2D_dup8k")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Wall"]
+position = Vector2(1161.5, 317)
+shape = SubResource("RectangleShape2D_bn3nv")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Wall"]
+position = Vector2(581.5, 655)
+shape = SubResource("RectangleShape2D_tjc3q")
