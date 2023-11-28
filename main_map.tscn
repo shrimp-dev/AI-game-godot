@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://b67vfembtft5f"]
+[gd_scene load_steps=6 format=3 uid="uid://b67vfembtft5f"]
 
-[ext_resource type="PackedScene" uid="uid://bgaykyupmieqr" path="res://macrofago.tscn" id="1_dd6gn"]
 [ext_resource type="Script" path="res://main_map.gd" id="1_gu3k2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s4wh1"]
@@ -17,9 +16,6 @@ size = Vector2(1393, 20)
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_gu3k2")
-
-[node name="Macrofago" parent="." instance=ExtResource("1_dd6gn")]
-position = Vector2(46, 35)
 
 [node name="Wall" type="StaticBody2D" parent="." groups=["0"]]
 

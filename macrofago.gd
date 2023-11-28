@@ -5,9 +5,23 @@ const SPEED = 150
 const class_dict = {"0":0, "1":1,"2":2,}
 
 var input_array = Array()
+
+var baseVel = Vector2(0,0)
+
+var id = 0;
+
+func _init():
+	Controller.connect("updateMacroSpeedSignal", self.setBaseVel)
+
+func _ready():
+	Controller.appendMacroInstances(self)
+
+func setBaseVel(vel: Vector2, _id):
+	if id == _id:
+		baseVel = vel
+
 func _physics_process(delta):
-	velocity.x = 0
-	velocity.y = 0
+	velocity = baseVel
 	if Input.is_key_pressed(KEY_W) or Input.is_action_pressed("ui_up") : 
 		velocity.y = -SPEED
 	if Input.is_key_pressed(KEY_A) or Input.is_action_pressed("ui_left") : 
