@@ -1,0 +1,55 @@
+[gd_scene load_steps=2 format=3 uid="uid://e0ul2pp70dw7"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_vh5va"]
+
+[node name="menu" type="Node2D"]
+script = ExtResource("1_vh5va")
+
+[node name="Macro" type="TextEdit" parent="."]
+offset_left = 395.0
+offset_top = 130.0
+offset_right = 745.0
+offset_bottom = 165.0
+placeholder_text = "Macrofagos"
+
+[node name="Cells" type="TextEdit" parent="."]
+offset_left = 395.0
+offset_top = 200.0
+offset_right = 745.0
+offset_bottom = 235.0
+placeholder_text = "Cells"
+
+[node name="Bacteria" type="TextEdit" parent="."]
+offset_left = 395.0
+offset_top = 270.0
+offset_right = 745.0
+offset_bottom = 305.0
+placeholder_text = "Bacteria"
+
+[node name="LifeTime" type="TextEdit" parent="."]
+offset_left = 395.0
+offset_top = 340.0
+offset_right = 745.0
+offset_bottom = 375.0
+placeholder_text = "Instances"
+
+[node name="Play" type="Button" parent="."]
+offset_left = 400.0
+offset_top = 430.0
+offset_right = 520.0
+offset_bottom = 460.0
+text = "Play"
+
+[node name="Leave" type="Button" parent="."]
+offset_left = 625.0
+offset_top = 430.0
+offset_right = 745.0
+offset_bottom = 460.0
+text = "Leave"
+
+[connection signal="text_changed" from="Macro" to="." method="_on_macro_text_changed"]
+[connection signal="text_changed" from="Cells" to="." method="_on_cells_text_changed"]
+[connection signal="text_changed" from="Bacteria" to="." method="_on_bacteria_text_changed"]
+[connection signal="text_changed" from="LifeTime" to="." method="_on_life_time_text_changed"]
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Leave" to="." method="_on_leave_pressed"]

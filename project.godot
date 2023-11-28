@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Ai Game"
-run/main_scene="res://main_map.tscn"
+run/main_scene="res://menu.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 config/icon="res://icon.svg"
 
@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Controller="*res://controller.gd"
 Socket="*res://socket.gd"
+Global="*res://global/Game.gd"
 
 [rendering]
 

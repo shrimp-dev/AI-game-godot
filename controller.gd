@@ -2,7 +2,11 @@ extends Node
 
 signal spawnMacrofSignal()
 signal updateMacroSpeedSignal()
-	
+
+var macro_qnt = 10 #int
+var bacteria_qnt = 15
+var cell_qnt = 80
+var mac_life_time = 10
 class Command:
 	var actor #String 
 	var id   #Int
@@ -56,10 +60,6 @@ func process_command(text):
 		if new_cmd.actor == "macro":
 			self.macrofageCommand(new_cmd)
 		
-func _ready():
-	print("aaa")
-	spawnMacrof(Vector2(20,20))
-	spawnMacrof(Vector2(40,40))
 	
 func spawnMacrof(pos):
 	emit_signal("spawnMacrofSignal", pos, len(self.macroInstances))

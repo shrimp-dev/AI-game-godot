@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4qp2ljqrd7x3"
-path="res://.godot/imported/Cell.png-165bab80469345072ad2bddddabb7c29.ctex"
+uid="uid://dum2k80mir7u1"
+path="res://.godot/imported/Bacteria.png-1a2bc7da34b92f54170e54de12eb5b4c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Cell.png"
-dest_files=["res://.godot/imported/Cell.png-165bab80469345072ad2bddddabb7c29.ctex"]
+source_file="res://assets/Bacteria/Bacteria.png"
+dest_files=["res://.godot/imported/Bacteria.png-1a2bc7da34b92f54170e54de12eb5b4c.ctex"]
 
 [params]
 

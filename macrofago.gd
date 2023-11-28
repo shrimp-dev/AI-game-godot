@@ -2,19 +2,23 @@ extends CharacterBody2D
 
 
 const SPEED = 150
-const class_dict = {"0":0, "1":1,"2":2,}
+const class_dict = {"0":0, "1":1,"2":2, "3": 3}
 
 var input_array = Array()
-
+var lifeTime = Controller.mac_life_time
 var baseVel = Vector2(0,0)
-
+const type = "macrofage"
 var id = 0;
-
+var points = 0
 func _init():
 	Controller.connect("updateMacroSpeedSignal", self.setBaseVel)
 
 func _ready():
+	$AnimatedSprite2D.play("Static")
 	Controller.appendMacroInstances(self)
+	$Timer.wait_time = lifeTime
+	$Timer.start()
+	
 
 func setBaseVel(vel: Vector2, _id):
 	if id == _id:
@@ -22,13 +26,14 @@ func setBaseVel(vel: Vector2, _id):
 
 func _physics_process(delta):
 	velocity = baseVel
-	if Input.is_key_pressed(KEY_W) or Input.is_action_pressed("ui_up") : 
+	
+	if Input.is_key_pressed(KEY_W) : 
 		velocity.y = -SPEED
-	if Input.is_key_pressed(KEY_A) or Input.is_action_pressed("ui_left") : 
+	if Input.is_key_pressed(KEY_A) : 
 		velocity.x = -SPEED
-	if Input.is_key_pressed(KEY_S) or Input.is_action_pressed("ui_down") : 
+	if Input.is_key_pressed(KEY_S) : 
 		velocity.y = SPEED
-	if Input.is_key_pressed(KEY_D) or Input.is_action_pressed("ui_right") : 
+	if Input.is_key_pressed(KEY_D) : 
 		velocity.x = SPEED
 	detect_distance()
 	move_and_slide()
@@ -57,7 +62,7 @@ func detect_distance() :
 		input_array.append(class_dict[$Down_Right.get_collider().get_groups()[0]])
 	if $Down_Left.is_colliding() :
 		var ray_size = Vector2(0,0).distance_to($Down_Left.target_position)
-		input_array.append(position.distance_to($Down_Left.get_collider().position)/ray_size)		
+		input_array.append(position.distance_to($Down_Left.get_collider().position)/ray_size)
 		input_array.append(class_dict[$Down_Left.get_collider().get_groups()[0]])
 	if $Up_Right.is_colliding() :
 		var ray_size = Vector2(0,0).distance_to($Up_Right.target_position)
@@ -67,3 +72,14 @@ func detect_distance() :
 		var ray_size = Vector2(0,0).distance_to($Up_Left.target_position)
 		input_array.append(position.distance_to($Up_Left.get_collider().position)/ray_size)		
 		input_array.append(class_dict[$Up_Left.get_collider().get_groups()[0]])
+
+func _on_timer_timeout():
+	death()
+func death():
+	points -= 100
+	$AnimatedSprite2D.play("Death")
+	await $AnimatedSprite2D.animation_finished
+	self.queue_free()
+func increase_timer():
+	$Timer.wait_time = $Timer.time_left + lifeTime
+	$Timer.start()

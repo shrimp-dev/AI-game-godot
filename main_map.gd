@@ -1,6 +1,7 @@
 extends Node2D
 var cell = preload("res://cell_body.tscn")
 var macrof = preload("res://macrofago.tscn")
+var bacteria = preload("res://bacteria.tscn")
 var spawnLocs = Array()
 var minDist = 18
 # Called when the node enters the scene tree for the first time.
@@ -9,8 +10,14 @@ func _init():
 	Controller.connect("spawnMacrofSignal", self.instantiateMacrof)
 
 func _ready():
-
-	for i in 100:
+	for i in Controller.macro_qnt:
+		Controller.spawnMacrof(getNextSpawnLoc())
+	for i in Controller.bacteria_qnt:
+		var new_bacteria = bacteria.instantiate()
+		new_bacteria.global_position = getNextSpawnLoc()
+		new_bacteria.add_to_group("3")
+		add_child(new_bacteria)
+	for i in Controller.cell_qnt:
 		var new_cell = cell.instantiate()
 		new_cell.global_position = getNextSpawnLoc()
 		new_cell.add_to_group("1")

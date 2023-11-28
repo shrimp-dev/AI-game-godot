@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1rmphumnleqd"
-path="res://.godot/imported/Macrofago.png-b302dc2c06b7b57af6bca9cec282a7d5.ctex"
+uid="uid://4qp2ljqrd7x3"
+path="res://.godot/imported/Cell.png-c0c494f94409f8c7040c4362565e22e4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Macrofago.png"
-dest_files=["res://.godot/imported/Macrofago.png-b302dc2c06b7b57af6bca9cec282a7d5.ctex"]
+source_file="res://assets/Cell/Cell.png"
+dest_files=["res://.godot/imported/Cell.png-c0c494f94409f8c7040c4362565e22e4.ctex"]
 
 [params]
 

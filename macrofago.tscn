@@ -1,20 +1,68 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgaykyupmieqr"]
+[gd_scene load_steps=11 format=3 uid="uid://bgaykyupmieqr"]
 
-[ext_resource type="Texture2D" uid="uid://b1rmphumnleqd" path="res://assets/Macrofago.png" id="1_1ovoy"]
 [ext_resource type="Script" path="res://macrofago.gd" id="1_s6u5v"]
+[ext_resource type="Texture2D" uid="uid://b1rmphumnleqd" path="res://assets/Macro/Macrofago.png" id="2_ws6uh"]
+[ext_resource type="Texture2D" uid="uid://b6f303yeqk4io" path="res://assets/Macro/Macrofago_Sheet.png" id="3_jpp5s"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bhrf3"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_choi5"]
+atlas = ExtResource("3_jpp5s")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0op3m"]
+atlas = ExtResource("3_jpp5s")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0th14"]
+atlas = ExtResource("3_jpp5s")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7hwx"]
+atlas = ExtResource("3_jpp5s")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvo4e"]
+atlas = ExtResource("3_jpp5s")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dtfg2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_choi5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0op3m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0th14")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7hwx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvo4e")
+}],
+"loop": false,
+"name": &"Death",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ws6uh")
+}],
+"loop": true,
+"name": &"Static",
+"speed": 5.0
+}]
+
 [node name="MacrofagoBody" type="CharacterBody2D"]
+collision_mask = 2
 script = ExtResource("1_s6u5v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_bhrf3")
-
-[node name="Macrofago" type="Sprite2D" parent="."]
-position = Vector2(-4.76837e-07, -4.76837e-07)
-scale = Vector2(1.25, 1.25)
-texture = ExtResource("1_1ovoy")
 
 [node name="Up" type="RayCast2D" parent="."]
 target_position = Vector2(0, -250)
@@ -39,3 +87,13 @@ target_position = Vector2(200, 200)
 
 [node name="Down_Left" type="RayCast2D" parent="."]
 target_position = Vector2(-200, 200)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dtfg2")
+animation = &"Death"
+autoplay = "Static"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

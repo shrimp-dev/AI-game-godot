@@ -1,25 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://de2nblxnpyued"]
+[gd_scene load_steps=5 format=3 uid="uid://de2nblxnpyued"]
 
-[ext_resource type="Texture2D" uid="uid://4qp2ljqrd7x3" path="res://assets/Cell.png" id="1_6cu1y"]
+[ext_resource type="Script" path="res://cell_body.gd" id="1_60nkf"]
+[ext_resource type="Texture2D" uid="uid://4qp2ljqrd7x3" path="res://assets/Cell/Cell.png" id="1_e657b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_82so8"]
 size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6gjau"]
-size = Vector2(16, 16)
+size = Vector2(18, 18)
 
 [node name="CellBody" type="CharacterBody2D"]
+collision_layer = 65535
+collision_mask = 65535
+script = ExtResource("1_60nkf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_82so8")
 
 [node name="Cell" type="Sprite2D" parent="."]
-position = Vector2(0, -1)
-texture = ExtResource("1_6cu1y")
+position = Vector2(3.27826e-07, -1)
+scale = Vector2(0.0625, 0.0634766)
+texture = ExtResource("1_e657b")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_6gjau")
+metadata/_edit_lock_ = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
