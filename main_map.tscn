@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b67vfembtft5f"]
+[gd_scene load_steps=7 format=3 uid="uid://b67vfembtft5f"]
 
 [ext_resource type="Script" path="res://main_map.gd" id="1_gu3k2"]
+[ext_resource type="Texture2D" uid="uid://c3u2hrd5fsrgo" path="res://assets/bg_items/bg_bg.png" id="3_oj316"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s4wh1"]
 size = Vector2(20, 782)
@@ -36,3 +37,14 @@ shape = SubResource("RectangleShape2D_bn3nv")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Wall" groups=["0"]]
 position = Vector2(581.5, 655)
 shape = SubResource("RectangleShape2D_tjc3q")
+
+[node name="BG" type="ParallaxBackground" parent="."]
+follow_viewport_enabled = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="BG"]
+motion_mirroring = Vector2(1151, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="BG/ParallaxLayer"]
+position = Vector2(576.5, 323.5)
+scale = Vector2(7.68667, 6.43)
+texture = ExtResource("3_oj316")

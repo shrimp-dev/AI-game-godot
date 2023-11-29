@@ -5,9 +5,12 @@ const SPEED = 150
 var life = 5
 var points = 0
 var baseVel = Vector2(0,0)
+var lifeTime = Controller.mac_life_time
 const type = "bacteria"
 func _ready():
 	$AnimatedSprite2D.play("Static")
+	$Timer.wait_time = lifeTime
+	$Timer.start()
 func _physics_process(delta):
 	var baseVel = Vector2(0,0)
 	velocity = baseVel
@@ -37,8 +40,13 @@ func _on_area_2d_body_entered(body):
 			body.increase_timer()
 			death()
 		
+func _on_timer_timeout():
+	death()
 func death():
 	points -= 100
 	$AnimatedSprite2D.play("Death")
 	await $AnimatedSprite2D.animation_finished
 	self.queue_free()
+func increase_timer(weight):
+	$Timer.wait_time = $Timer.time_left + lifeTime/weight
+	$Timer.start()

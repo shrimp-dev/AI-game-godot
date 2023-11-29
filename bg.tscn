@@ -1,0 +1,451 @@
+[gd_scene load_steps=14 format=3 uid="uid://d0m281yqntdi6"]
+
+[ext_resource type="Script" path="res://bg.gd" id="1_otmpc"]
+[ext_resource type="Texture2D" uid="uid://vrgp5a6gh8dk" path="res://assets/bg_items/bg_item.png" id="1_uqrlx"]
+[ext_resource type="Texture2D" uid="uid://c3u2hrd5fsrgo" path="res://assets/bg_items/bg_bg.png" id="2_ihekm"]
+[ext_resource type="Texture2D" uid="uid://bg0fr88b5guxh" path="res://assets/bg_items/bg_item_2.png" id="2_uruml"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_focql"]
+atlas = ExtResource("2_uruml")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83517"]
+atlas = ExtResource("2_uruml")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgqk8"]
+atlas = ExtResource("2_uruml")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2bv3"]
+atlas = ExtResource("2_uruml")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_at4j7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_focql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83517")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgqk8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2bv3")
+}],
+"loop": true,
+"name": &"Move",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsq45"]
+atlas = ExtResource("1_uqrlx")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ge28f"]
+atlas = ExtResource("1_uqrlx")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ib2f3"]
+atlas = ExtResource("1_uqrlx")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y3s2c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lsq45")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ge28f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ib2f3")
+}],
+"loop": true,
+"name": &"Move",
+"speed": 5.0
+}]
+
+[node name="BG" type="ParallaxBackground"]
+script = ExtResource("1_otmpc")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+scale = Vector2(1.0031, 1)
+motion_scale = Vector2(0.4, 0.4)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(576, 324.5)
+scale = Vector2(8.0009, 6.47552)
+texture = ExtResource("2_ihekm")
+
+[node name="Red" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1151, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Red"]
+position = Vector2(111, 46)
+sprite_frames = SubResource("SpriteFrames_at4j7")
+animation = &"Move"
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Red"]
+position = Vector2(156, 128)
+sprite_frames = SubResource("SpriteFrames_at4j7")
+animation = &"Move"
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Red"]
+position = Vector2(68, 237)
+sprite_frames = SubResource("SpriteFrames_at4j7")
+animation = &"Move"
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Red"]
+position = Vector2(176, 322)
+sprite_frames = SubResource("SpriteFrames_at4j7")
+animation = &"Move"
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="Red"]
+position = Vector2(109, 484)
+sprite_frames = SubResource("SpriteFrames_at4j7")
+animation = &"Move"
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="Red"]
+position = Vector2(328, 161)
+sprite_frames = SubResource("SpriteFrames_at4j7")
+animation = &"Move"
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="Red"]
+position = Vector2(309, 439)
+sprite_frames = SubResource("SpriteFrames_at4j7")
+animation = &"Move"
+
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="Red"]
+position = Vector2(468, 267)
+sprite_frames = SubResource("SpriteFrames_at4j7")
+animation = &"Move"
+
+[node name="AnimatedSprite2D9" type="AnimatedSprite2D" parent="Red"]
+position = Vector2(438, 40)
+sprite_frames = SubResource("SpriteFrames_at4j7")
+animation = &"Move"
+
+[node name="AnimatedSprite2D10" type="AnimatedSprite2D" parent="Red"]
+position = Vector2(466, 486)
+sprite_frames = SubResource("SpriteFrames_at4j7")
+animation = &"Move"
+
+[node name="AnimatedSprite2D11" type="AnimatedSprite2D" parent="Red"]
+position = Vector2(295, 584)
+sprite_frames = SubResource("SpriteFrames_at4j7")
+animation = &"Move"
+
+[node name="AnimatedSprite2D12" type="AnimatedSprite2D" parent="Red"]
+position = Vector2(501, 598)
+sprite_frames = SubResource("SpriteFrames_at4j7")
+animation = &"Move"
+
+[node name="AnimatedSprite2D13" type="AnimatedSprite2D" parent="Red"]
+position = Vector2(647, 474)
+sprite_frames = SubResource("SpriteFrames_at4j7")
+animation = &"Move"
+
+[node name="AnimatedSprite2D14" type="AnimatedSprite2D" parent="Red"]
+position = Vector2(595, 334)
+sprite_frames = SubResource("SpriteFrames_at4j7")
+animation = &"Move"
+
+[node name="AnimatedSprite2D15" type="AnimatedSprite2D" parent="Red"]
+position = Vector2(636, 198)
+sprite_frames = SubResource("SpriteFrames_at4j7")
+animation = &"Move"
+
+[node name="AnimatedSprite2D16" type="AnimatedSprite2D" parent="Red"]
+position = Vector2(594, 40)
+sprite_frames = SubResource("SpriteFrames_at4j7")
+animation = &"Move"
+
+[node name="AnimatedSprite2D17" type="AnimatedSprite2D" parent="Red"]
+position = Vector2(912, 60)
+sprite_frames = SubResource("SpriteFrames_at4j7")
+animation = &"Move"
+
+[node name="AnimatedSprite2D18" type="AnimatedSprite2D" parent="Red"]
+position = Vector2(1062, 117)
+sprite_frames = SubResource("SpriteFrames_at4j7")
+animation = &"Move"
+
+[node name="AnimatedSprite2D19" type="AnimatedSprite2D" parent="Red"]
+position = Vector2(915, 213)
+sprite_frames = SubResource("SpriteFrames_at4j7")
+animation = &"Move"
+
+[node name="AnimatedSprite2D20" type="AnimatedSprite2D" parent="Red"]
+position = Vector2(1007, 330)
+sprite_frames = SubResource("SpriteFrames_at4j7")
+animation = &"Move"
+
+[node name="AnimatedSprite2D21" type="AnimatedSprite2D" parent="Red"]
+position = Vector2(1112, 262)
+sprite_frames = SubResource("SpriteFrames_at4j7")
+animation = &"Move"
+
+[node name="AnimatedSprite2D22" type="AnimatedSprite2D" parent="Red"]
+position = Vector2(1115, 491)
+sprite_frames = SubResource("SpriteFrames_at4j7")
+animation = &"Move"
+
+[node name="AnimatedSprite2D23" type="AnimatedSprite2D" parent="Red"]
+position = Vector2(1049, 591)
+sprite_frames = SubResource("SpriteFrames_at4j7")
+animation = &"Move"
+
+[node name="AnimatedSprite2D24" type="AnimatedSprite2D" parent="Red"]
+position = Vector2(892, 462)
+sprite_frames = SubResource("SpriteFrames_at4j7")
+animation = &"Move"
+
+[node name="AnimatedSprite2D25" type="AnimatedSprite2D" parent="Red"]
+position = Vector2(821, 339)
+sprite_frames = SubResource("SpriteFrames_at4j7")
+animation = &"Move"
+
+[node name="AnimatedSprite2D26" type="AnimatedSprite2D" parent="Red"]
+position = Vector2(897, 596)
+sprite_frames = SubResource("SpriteFrames_at4j7")
+animation = &"Move"
+
+[node name="AnimatedSprite2D27" type="AnimatedSprite2D" parent="Red"]
+position = Vector2(778, 466)
+sprite_frames = SubResource("SpriteFrames_at4j7")
+animation = &"Move"
+
+[node name="AnimatedSprite2D28" type="AnimatedSprite2D" parent="Red"]
+position = Vector2(642, 583)
+sprite_frames = SubResource("SpriteFrames_at4j7")
+animation = &"Move"
+
+[node name="AnimatedSprite2D29" type="AnimatedSprite2D" parent="Red"]
+position = Vector2(696, 355)
+sprite_frames = SubResource("SpriteFrames_at4j7")
+animation = &"Move"
+
+[node name="AnimatedSprite2D30" type="AnimatedSprite2D" parent="Red"]
+position = Vector2(485, 355)
+sprite_frames = SubResource("SpriteFrames_at4j7")
+animation = &"Move"
+
+[node name="AnimatedSprite2D31" type="AnimatedSprite2D" parent="Red"]
+position = Vector2(325, 322)
+sprite_frames = SubResource("SpriteFrames_at4j7")
+animation = &"Move"
+
+[node name="AnimatedSprite2D32" type="AnimatedSprite2D" parent="Red"]
+position = Vector2(309, 60)
+sprite_frames = SubResource("SpriteFrames_at4j7")
+animation = &"Move"
+
+[node name="Purple" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.7, 0.7)
+motion_mirroring = Vector2(1151, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Purple"]
+position = Vector2(18, 27)
+sprite_frames = SubResource("SpriteFrames_y3s2c")
+animation = &"Move"
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Purple"]
+position = Vector2(58, 68)
+sprite_frames = SubResource("SpriteFrames_y3s2c")
+animation = &"Move"
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Purple"]
+position = Vector2(37, 127)
+sprite_frames = SubResource("SpriteFrames_y3s2c")
+animation = &"Move"
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Purple"]
+position = Vector2(127, 208)
+sprite_frames = SubResource("SpriteFrames_y3s2c")
+animation = &"Move"
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="Purple"]
+position = Vector2(68, 308)
+sprite_frames = SubResource("SpriteFrames_y3s2c")
+animation = &"Move"
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="Purple"]
+position = Vector2(245, 125)
+sprite_frames = SubResource("SpriteFrames_y3s2c")
+animation = &"Move"
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="Purple"]
+position = Vector2(251, 272)
+sprite_frames = SubResource("SpriteFrames_y3s2c")
+animation = &"Move"
+
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="Purple"]
+position = Vector2(373, 93)
+sprite_frames = SubResource("SpriteFrames_y3s2c")
+animation = &"Move"
+
+[node name="AnimatedSprite2D9" type="AnimatedSprite2D" parent="Purple"]
+position = Vector2(398, 310)
+sprite_frames = SubResource("SpriteFrames_y3s2c")
+animation = &"Move"
+
+[node name="AnimatedSprite2D10" type="AnimatedSprite2D" parent="Purple"]
+position = Vector2(606, 108)
+sprite_frames = SubResource("SpriteFrames_y3s2c")
+animation = &"Move"
+
+[node name="AnimatedSprite2D11" type="AnimatedSprite2D" parent="Purple"]
+position = Vector2(628, 293)
+sprite_frames = SubResource("SpriteFrames_y3s2c")
+animation = &"Move"
+
+[node name="AnimatedSprite2D12" type="AnimatedSprite2D" parent="Purple"]
+position = Vector2(771, 116)
+sprite_frames = SubResource("SpriteFrames_y3s2c")
+animation = &"Move"
+
+[node name="AnimatedSprite2D13" type="AnimatedSprite2D" parent="Purple"]
+position = Vector2(799, 271)
+sprite_frames = SubResource("SpriteFrames_y3s2c")
+animation = &"Move"
+
+[node name="AnimatedSprite2D14" type="AnimatedSprite2D" parent="Purple"]
+position = Vector2(535, 192)
+sprite_frames = SubResource("SpriteFrames_y3s2c")
+animation = &"Move"
+
+[node name="AnimatedSprite2D15" type="AnimatedSprite2D" parent="Purple"]
+position = Vector2(213, 437)
+sprite_frames = SubResource("SpriteFrames_y3s2c")
+animation = &"Move"
+
+[node name="AnimatedSprite2D16" type="AnimatedSprite2D" parent="Purple"]
+position = Vector2(324, 525)
+sprite_frames = SubResource("SpriteFrames_y3s2c")
+animation = &"Move"
+
+[node name="AnimatedSprite2D17" type="AnimatedSprite2D" parent="Purple"]
+position = Vector2(39, 543)
+sprite_frames = SubResource("SpriteFrames_y3s2c")
+animation = &"Move"
+
+[node name="AnimatedSprite2D18" type="AnimatedSprite2D" parent="Purple"]
+position = Vector2(135, 378)
+sprite_frames = SubResource("SpriteFrames_y3s2c")
+animation = &"Move"
+
+[node name="AnimatedSprite2D19" type="AnimatedSprite2D" parent="Purple"]
+position = Vector2(525, 547)
+sprite_frames = SubResource("SpriteFrames_y3s2c")
+animation = &"Move"
+
+[node name="AnimatedSprite2D20" type="AnimatedSprite2D" parent="Purple"]
+position = Vector2(574, 415)
+sprite_frames = SubResource("SpriteFrames_y3s2c")
+animation = &"Move"
+
+[node name="AnimatedSprite2D21" type="AnimatedSprite2D" parent="Purple"]
+position = Vector2(405, 409)
+sprite_frames = SubResource("SpriteFrames_y3s2c")
+animation = &"Move"
+
+[node name="AnimatedSprite2D22" type="AnimatedSprite2D" parent="Purple"]
+position = Vector2(775, 385)
+sprite_frames = SubResource("SpriteFrames_y3s2c")
+animation = &"Move"
+
+[node name="AnimatedSprite2D23" type="AnimatedSprite2D" parent="Purple"]
+position = Vector2(709, 530)
+sprite_frames = SubResource("SpriteFrames_y3s2c")
+animation = &"Move"
+
+[node name="AnimatedSprite2D24" type="AnimatedSprite2D" parent="Purple"]
+position = Vector2(938, 534)
+sprite_frames = SubResource("SpriteFrames_y3s2c")
+animation = &"Move"
+
+[node name="AnimatedSprite2D25" type="AnimatedSprite2D" parent="Purple"]
+position = Vector2(934, 414)
+sprite_frames = SubResource("SpriteFrames_y3s2c")
+animation = &"Move"
+
+[node name="AnimatedSprite2D26" type="AnimatedSprite2D" parent="Purple"]
+position = Vector2(974, 254)
+sprite_frames = SubResource("SpriteFrames_y3s2c")
+animation = &"Move"
+
+[node name="AnimatedSprite2D27" type="AnimatedSprite2D" parent="Purple"]
+position = Vector2(901, 139)
+sprite_frames = SubResource("SpriteFrames_y3s2c")
+animation = &"Move"
+
+[node name="AnimatedSprite2D28" type="AnimatedSprite2D" parent="Purple"]
+position = Vector2(723, 203)
+sprite_frames = SubResource("SpriteFrames_y3s2c")
+animation = &"Move"
+
+[node name="AnimatedSprite2D29" type="AnimatedSprite2D" parent="Purple"]
+position = Vector2(509, 74)
+sprite_frames = SubResource("SpriteFrames_y3s2c")
+animation = &"Move"
+
+[node name="AnimatedSprite2D30" type="AnimatedSprite2D" parent="Purple"]
+position = Vector2(686, 32)
+sprite_frames = SubResource("SpriteFrames_y3s2c")
+animation = &"Move"
+
+[node name="AnimatedSprite2D31" type="AnimatedSprite2D" parent="Purple"]
+position = Vector2(984, 59)
+sprite_frames = SubResource("SpriteFrames_y3s2c")
+animation = &"Move"
+
+[node name="AnimatedSprite2D32" type="AnimatedSprite2D" parent="Purple"]
+position = Vector2(812, 49)
+sprite_frames = SubResource("SpriteFrames_y3s2c")
+animation = &"Move"
+
+[node name="AnimatedSprite2D33" type="AnimatedSprite2D" parent="Purple"]
+position = Vector2(1089, 209)
+sprite_frames = SubResource("SpriteFrames_y3s2c")
+animation = &"Move"
+
+[node name="AnimatedSprite2D34" type="AnimatedSprite2D" parent="Purple"]
+position = Vector2(1073, 393)
+sprite_frames = SubResource("SpriteFrames_y3s2c")
+animation = &"Move"
+
+[node name="AnimatedSprite2D35" type="AnimatedSprite2D" parent="Purple"]
+position = Vector2(785, 589)
+sprite_frames = SubResource("SpriteFrames_y3s2c")
+animation = &"Move"
+
+[node name="AnimatedSprite2D36" type="AnimatedSprite2D" parent="Purple"]
+position = Vector2(894, 333)
+sprite_frames = SubResource("SpriteFrames_y3s2c")
+animation = &"Move"
+
+[node name="AnimatedSprite2D37" type="AnimatedSprite2D" parent="Purple"]
+position = Vector2(400, 182)
+sprite_frames = SubResource("SpriteFrames_y3s2c")
+animation = &"Move"
+
+[node name="AnimatedSprite2D38" type="AnimatedSprite2D" parent="Purple"]
+position = Vector2(228, 44)
+sprite_frames = SubResource("SpriteFrames_y3s2c")
+animation = &"Move"
+
+[node name="AnimatedSprite2D39" type="AnimatedSprite2D" parent="Purple"]
+position = Vector2(212, 218)
+sprite_frames = SubResource("SpriteFrames_y3s2c")
+animation = &"Move"
+
+[node name="AnimatedSprite2D40" type="AnimatedSprite2D" parent="Purple"]
+position = Vector2(184, 557)
+sprite_frames = SubResource("SpriteFrames_y3s2c")
+animation = &"Move"

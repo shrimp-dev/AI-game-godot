@@ -5,8 +5,10 @@ var life = 10
 
 func _on_area_2d_body_entered(body):
 	if body.get_groups()[0] == "3":
+		
 		life -= 1
 		body.points += 1
+		body.increase_timer(10)
 		if life == 8:
 			$Cell.texture = load("res://assets/Cell/Cell3.png")
 		if life == 6:
@@ -20,6 +22,7 @@ func _on_area_2d_body_entered(body):
 		
 		if life == 0:
 			body.points += 10
+			body.increase_timer(2)
 			death()
 
 func death():
