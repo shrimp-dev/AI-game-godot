@@ -22,6 +22,7 @@ func _on_area_2d_body_entered(body):
 		
 		if life == 0:
 			body.points += 10
+			body.stattrak += 1
 			body.increase_timer(2)
 			death()
 

@@ -11,13 +11,15 @@ offset_left = 395.0
 offset_top = 130.0
 offset_right = 745.0
 offset_bottom = 165.0
-placeholder_text = "Macrofagos"
+theme_override_colors/background_color = Color(0.184314, 0.00784314, 0.0392157, 1)
+placeholder_text = "Macrofages"
 
 [node name="Cells" type="TextEdit" parent="."]
 offset_left = 395.0
 offset_top = 200.0
 offset_right = 745.0
 offset_bottom = 235.0
+theme_override_colors/background_color = Color(0.184314, 0.00784314, 0.0392157, 1)
 placeholder_text = "Cells"
 
 [node name="Bacteria" type="TextEdit" parent="."]
@@ -25,14 +27,18 @@ offset_left = 395.0
 offset_top = 270.0
 offset_right = 745.0
 offset_bottom = 305.0
+theme_override_colors/background_color = Color(0.184314, 0.00784314, 0.0392157, 1)
 placeholder_text = "Bacteria"
+context_menu_enabled = false
+shortcut_keys_enabled = false
 
 [node name="LifeTime" type="TextEdit" parent="."]
 offset_left = 395.0
 offset_top = 340.0
 offset_right = 745.0
 offset_bottom = 375.0
-placeholder_text = "Instances"
+theme_override_colors/background_color = Color(0.184314, 0.00784314, 0.0392157, 1)
+placeholder_text = "Life Time"
 
 [node name="Play" type="Button" parent="."]
 offset_left = 400.0

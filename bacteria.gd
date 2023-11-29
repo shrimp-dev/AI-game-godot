@@ -4,13 +4,20 @@ extends CharacterBody2D
 const SPEED = 150
 var life = 5
 var points = 0
+var id = 0;
 var baseVel = Vector2(0,0)
 var lifeTime = Controller.mac_life_time
+var stattrak = 0
 const type = "bacteria"
 func _ready():
+	Controller.connect("updateMacroSpeedSignal", self.setBaseVel)
+	Controller.appendBacInstances(self)
 	$AnimatedSprite2D.play("Static")
 	$Timer.wait_time = lifeTime
 	$Timer.start()
+func setBaseVel(vel: Vector2, _id):
+	if id == _id:
+		baseVel = vel
 func _physics_process(delta):
 	var baseVel = Vector2(0,0)
 	velocity = baseVel
@@ -50,3 +57,7 @@ func death():
 func increase_timer(weight):
 	$Timer.wait_time = $Timer.time_left + lifeTime/weight
 	$Timer.start()
+	if stattrak >= 2:
+		points += 20
+		Controller.spawnBac(Vector2(position.x + 10, position.y +10))
+		stattrak = 0

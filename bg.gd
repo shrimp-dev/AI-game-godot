@@ -5,9 +5,12 @@ var scrolling_speed = 100
 func _ready():
 	var hemacias = $Red.get_children()
 	var purple = $Purple.get_children()
+	var white = $White.get_children()
 	for i in hemacias :
 		i.play("Move")
 	for i in purple :
+		i.play("Move")
+	for i in white :
 		i.play("Move")
 func _process(delta):
 	scroll_offset.x -= scrolling_speed * delta

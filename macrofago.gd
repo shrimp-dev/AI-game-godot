@@ -81,11 +81,11 @@ func death():
 	await $AnimatedSprite2D.animation_finished
 	self.queue_free()
 func increase_timer():
-	print(stattrak)
 	$Timer.wait_time = $Timer.time_left + lifeTime
 	$Timer.start()
 	if stattrak >= 2:
 		print(stattrak)
+		points += 20
 		Controller.spawnMacrof(Vector2(position.x + 10, position.y +10))
 		stattrak = 0
 	else: 

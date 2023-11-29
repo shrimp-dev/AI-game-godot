@@ -95,5 +95,7 @@ wait_time = 10.0
 sprite_frames = SubResource("SpriteFrames_dtfg2")
 animation = &"Death"
 autoplay = "Static"
+frame = 4
+frame_progress = 1.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

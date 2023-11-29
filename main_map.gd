@@ -9,15 +9,13 @@ var scrolling_speed = 30
 
 func _init():
 	Controller.connect("spawnMacrofSignal", self.instantiateMacrof)
+	Controller.connect("spawnBacSignal", self.instantiateBac)
 
 func _ready():
 	for i in Controller.macro_qnt:
 		Controller.spawnMacrof(getNextSpawnLoc())
 	for i in Controller.bacteria_qnt:
-		var new_bacteria = bacteria.instantiate()
-		new_bacteria.global_position = getNextSpawnLoc()
-		new_bacteria.add_to_group("3")
-		add_child(new_bacteria)
+		Controller.spawnBac(getNextSpawnLoc())
 	for i in Controller.cell_qnt:
 		var new_cell = cell.instantiate()
 		new_cell.global_position = getNextSpawnLoc()
@@ -43,6 +41,12 @@ func instantiateMacrof(position, id):
 	newMacrof.add_to_group("2")
 	
 	add_child(newMacrof)
+	
+func instantiateBac(position, id):
+	var new_bacteria = bacteria.instantiate()
+	new_bacteria.global_position = position
+	new_bacteria.add_to_group("3")
+	add_child(new_bacteria)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

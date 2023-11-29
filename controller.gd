@@ -1,6 +1,7 @@
 extends Node
 
 signal spawnMacrofSignal()
+signal spawnBacSignal()
 signal updateMacroSpeedSignal()
 
 var macro_qnt = 10 #int
@@ -47,10 +48,11 @@ class Command:
 		from_dict(data)
 		
 var macroInstances: Array = []
-
+var bacInstances: Array = []
 func appendMacroInstances(macrof):
 	macroInstances.append(macrof)
-
+func appendBacInstances(bac):
+	bacInstances.append(bac)
 func process_command(text):
 	print(text)
 	var cmdlist = text.split("/")
@@ -60,6 +62,9 @@ func process_command(text):
 		if new_cmd.actor == "macro":
 			self.macrofageCommand(new_cmd)
 		
+
+func spawnBac(pos):
+	emit_signal("spawnBacSignal", pos, len(self.bacInstances))
 	
 func spawnMacrof(pos):
 	emit_signal("spawnMacrofSignal", pos, len(self.macroInstances))
@@ -67,6 +72,11 @@ func spawnMacrof(pos):
 func updateMacroSpeed(vel: Vector2, id):
 	emit_signal("updateMacroSpeedSignal", vel, id)
 	
+func bacCommand(command: Command):
+	if command.commandStr == "create":
+		self.spawnMacrof(Vector2(command.x, command.y))
+	elif command.commandStr == "move":
+		self.updateMacroSpeed(Vector2(command.x, command.y), command.id)
 func macrofageCommand(command: Command):
 	if command.commandStr == "create":
 		self.spawnMacrof(Vector2(command.x, command.y))
