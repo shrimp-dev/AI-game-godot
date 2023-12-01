@@ -129,7 +129,7 @@ motion_mirroring = Vector2(1151, 0)
 position = Vector2(67, 177)
 sprite_frames = SubResource("SpriteFrames_xocoh")
 animation = &"Move"
-frame_progress = 0.91261
+frame_progress = 0.209798
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="White"]
 position = Vector2(67, 400)

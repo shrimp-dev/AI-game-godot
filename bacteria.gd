@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 150
+var SPEED = 150
 var life = 5
 var points = 0
 var id = 0;
@@ -10,6 +10,7 @@ var lifeTime = Controller.mac_life_time
 var stattrak = 0
 const type = "bacteria"
 func _ready():
+	$AnimatedSprite2D.scale = Vector2(1, 1)
 	Controller.connect("updateMacroSpeedSignal", self.setBaseVel)
 	Controller.appendBacInstances(self)
 	$AnimatedSprite2D.play("Static")
@@ -59,5 +60,21 @@ func increase_timer(weight):
 	$Timer.start()
 	if stattrak >= 2:
 		points += 20
-		Controller.spawnBac(Vector2(position.x + 10, position.y +10))
+		$AnimatedSprite2D.scale = Vector2(0.36, 0.36)
+		$AnimatedSprite2D.position.x -= 9
+		SPEED = 0
+		$AnimatedSprite2D.play("Mitosis")
+		await $AnimatedSprite2D.animation_finished
+		SPEED = 150
+		$AnimatedSprite2D.scale = Vector2(1, 1)
+		$AnimatedSprite2D.position.x += 9
+		if life >= 4 :
+			$AnimatedSprite2D.play("Static")
+		if life <= 3:
+			$AnimatedSprite2D.play("First_Dmg")
+		if life == 1:
+			$AnimatedSprite2D.play("Second_Dmg")
+		Controller.spawnBac(Vector2(position.x - 20, position.y))
+		
 		stattrak = 0
+
