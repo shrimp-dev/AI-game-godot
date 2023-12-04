@@ -13,9 +13,11 @@ var _server_dict: Dictionary = {
 
 var connection
 var connected = false
+func _init():
+	Controller.connect("writeToSocket",self.write)
+	Controller.connect("startSocket",self.start_socket)
 
-
-func _ready():
+func start_socket():
 	var ip = _server_dict[region][0]
 	var port = _server_dict[region][1]
 	
@@ -33,6 +35,8 @@ func _ready():
 		print("Error connecting to " + ip + " : " + str(port))
 
 func _process( delta ):
+	if connection==null:
+		return
 	var ip = _server_dict[region][0]
 	var port = _server_dict[region][1]
 	
@@ -60,4 +64,25 @@ func _process( delta ):
 		else:
 			print("Got Data: ")
 			Controller.process_command(data[1].get_string_from_utf8())
+			
+func write(text):
+	var ip = _server_dict[region][0]
+	var port = _server_dict[region][1]
+	
+	connection.poll()
+
+	if !connected:
+		if connection.get_status() == connection.STATUS_CONNECTED:
+			print("Process connected to " + ip + " : " + str(port))
+			connected = true
+			return
+	
+	if connection.get_status() == connection.STATUS_NONE or connection.get_status() == connection.STATUS_ERROR:
+		print("Server disconnected?")
+		connected = false
+		set_process(false)
+		return
+		
+	connection.put_utf8_string(text)
+	
 

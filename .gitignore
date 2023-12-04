@@ -1,2 +1,4 @@
 # Godot 4+ specific ignores
 .godot/
+python_server/venv/*
+python_server/genetic/__pycache__/*

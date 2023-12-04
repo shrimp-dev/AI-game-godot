@@ -3,11 +3,17 @@ extends Node
 signal spawnMacrofSignal()
 signal spawnBacSignal()
 signal updateMacroSpeedSignal()
+signal writeToSocket()
+signal startSocket()
+signal getMacroSensorsSignal()
+signal updateBacSpeedSignal()
+signal getBacSensorsSignal()
 
-var macro_qnt = 10 #int
-var bacteria_qnt = 15
-var cell_qnt = 80
-var mac_life_time = 10
+var macro_qnt = 20 #int
+var bacteria_qnt = 20
+var cell_qnt = 30
+var mac_life_time = 10000
+var game_status = false
 class Command:
 	var actor #String 
 	var id   #Int
@@ -61,10 +67,19 @@ func process_command(text):
 		new_cmd.from_json(cmd)
 		if new_cmd.actor == "macro":
 			self.macrofageCommand(new_cmd)
+		if new_cmd.actor == "bac":
+			self.bacCommand(new_cmd)
+		if new_cmd.actor == "main":
+			self.mainCommand(new_cmd)
 		
-
+func start_socket():
+	emit_signal("startSocket")
 func spawnBac(pos):
 	emit_signal("spawnBacSignal", pos, len(self.bacInstances))
+func updateBacSpeed(vel: Vector2, id):
+	emit_signal("updateBacSpeedSignal", vel, id)
+func getBacSensors(id):
+	emit_signal("getBacSensorsSignal",id)
 	
 func spawnMacrof(pos):
 	emit_signal("spawnMacrofSignal", pos, len(self.macroInstances))
@@ -72,14 +87,40 @@ func spawnMacrof(pos):
 func updateMacroSpeed(vel: Vector2, id):
 	emit_signal("updateMacroSpeedSignal", vel, id)
 	
+func getMacroSensors(id):
+	emit_signal("getMacroSensorsSignal", id)
+	
 func bacCommand(command: Command):
 	if command.commandStr == "create":
-		self.spawnMacrof(Vector2(command.x, command.y))
+		self.spawnBac(Vector2(command.x, command.y))
 	elif command.commandStr == "move":
-		self.updateMacroSpeed(Vector2(command.x, command.y), command.id)
+		self.updateBacSpeed(Vector2(command.x, command.y), command.id)
+	elif command.commandStr == "sensors":
+		var text = {"id":command.id,
+					"points":self.bacInstances[command.id].points,
+					"sensors":self.bacInstances[command.id].input_array}
+			
+		self.write(str(text))
 func macrofageCommand(command: Command):
 	if command.commandStr == "create":
 		self.spawnMacrof(Vector2(command.x, command.y))
 	elif command.commandStr == "move":
 		self.updateMacroSpeed(Vector2(command.x, command.y), command.id)
-	
+	elif command.commandStr == "sensors":
+		var text = {"id":command.id,
+					"points":self.macroInstances[command.id].points,
+					"sensors":self.macroInstances[command.id].input_array}
+			
+		self.write(str(text))
+		
+		
+func write(text):
+	emit_signal("writeToSocket",text)
+func mainCommand(command: Command):
+	if command.commandStr == "get_base":
+		var text = {"macro_qnt":macro_qnt,
+				"bacteria_qnt":bacteria_qnt,
+				"cell_qnt":cell_qnt,
+				"mac_life_time":mac_life_time}
+			
+		self.write(str(text))

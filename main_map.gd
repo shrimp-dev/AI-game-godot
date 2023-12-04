@@ -5,6 +5,7 @@ var bacteria = preload("res://bacteria.tscn")
 var spawnLocs = Array()
 var minDist = 18
 var scrolling_speed = 30
+
 # Called when the node enters the scene tree for the first time.
 
 func _init():

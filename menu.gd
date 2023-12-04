@@ -7,9 +7,12 @@ func _ready():
 
 func _on_play_pressed():
 	get_tree().change_scene_to_file("res://main_map.tscn")
+	Controller.start_socket()
 
 func _on_leave_pressed():
 	get_tree().quit()
+	
+	
 
 func _on_macro_text_changed():
 	Controller.macro_qnt = int($Macro.text)
